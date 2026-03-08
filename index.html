@@ -259,31 +259,31 @@
     transform: scale(1.08, 1.08);
   }
 
-.hero-hex-main {
-  position: absolute;
-  inset: 28px 16px 0 16px;
-  background: linear-gradient(135deg, rgba(29,78,216,0.22), rgba(76,29,149,0.24));
-  clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 60px rgba(59,130,246,0.20), inset 0 0 30px rgba(124,58,237,0.12);
-  animation: float 4s ease-in-out infinite;
-  overflow: visible;
-}
+  .hero-hex-main {
+    position: absolute;
+    inset: 22px 16px 4px 16px;
+    background: linear-gradient(135deg, rgba(29,78,216,0.22), rgba(76,29,149,0.24));
+    clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(59,130,246,0.20), inset 0 0 30px rgba(124,58,237,0.12);
+    animation: float 4s ease-in-out infinite;
+    overflow: visible;
+  }
 
-.hero-hex-border {
-  position: absolute;
-  inset: 20px 8px 0 8px;
-  clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(96,165,250,0.65), rgba(167,139,250,0.65));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: borderGlow 3s ease-in-out infinite alternate;
-}
+  .hero-hex-border {
+    position: absolute;
+    inset: 14px 8px 0 8px;
+    clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(96,165,250,0.65), rgba(167,139,250,0.65));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGlow 3s ease-in-out infinite alternate;
+  }
 
   .hero-logo-img {
     max-width: none;
@@ -297,6 +297,7 @@
     flex-shrink: 0;
     position: relative;
     z-index: 2;
+    transform: translateY(-3px);
   }
 
   .hero-title {
@@ -513,6 +514,7 @@
 
     .hero-logo-img {
       width: 150%;
+      transform: translateY(-3px);
     }
 
     .hero-stats {
@@ -537,6 +539,7 @@
 
     .hero-logo-img {
       width: 143%;
+      transform: translateY(-3px);
     }
 
     .hero-stats {
