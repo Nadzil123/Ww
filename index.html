@@ -241,8 +241,8 @@
 
   .hero-logo-display {
     position: relative;
-    width: min(360px, 72vw);
-    aspect-ratio: 0.95 / 1.08;
+    width: min(340px, 74vw);
+    aspect-ratio: 1 / 1.02;
     margin-bottom: 30px;
     animation: fadeUp 0.8s 0.05s ease both;
     z-index: 2;
@@ -252,18 +252,18 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, #1e3a8a, #4c1d95);
-    clip-path: polygon(50% 0%, 96% 22%, 96% 78%, 50% 100%, 4% 78%, 4% 22%);
+    clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
     animation: hexRotate 12s linear infinite;
     opacity: 0.24;
     filter: blur(22px);
-    transform: scale(1.12, 1.18);
+    transform: scale(1.08, 1.08);
   }
 
   .hero-hex-main {
     position: absolute;
-    inset: 18px 12px;
+    inset: 16px;
     background: linear-gradient(135deg, rgba(29,78,216,0.22), rgba(76,29,149,0.24));
-    clip-path: polygon(50% 0%, 96% 22%, 96% 78%, 50% 100%, 4% 78%, 4% 22%);
+    clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,8 +274,8 @@
 
   .hero-hex-border {
     position: absolute;
-    inset: 8px 4px;
-    clip-path: polygon(50% 0%, 96% 22%, 96% 78%, 50% 100%, 4% 78%, 4% 22%);
+    inset: 8px;
+    clip-path: polygon(50% 0%, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
     padding: 2px;
     background: linear-gradient(135deg, rgba(96,165,250,0.65), rgba(167,139,250,0.65));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -288,7 +288,7 @@
   .hero-logo-img {
     max-width: none;
     max-height: none;
-    width: 168%;
+    width: 160%;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 26px rgba(96,165,250,0.28));
@@ -479,8 +479,8 @@
   }
 
   @keyframes hexRotate {
-    from { transform: rotate(0deg) scale(1.12, 1.18); }
-    to { transform: rotate(360deg) scale(1.12, 1.18); }
+    from { transform: rotate(0deg) scale(1.08, 1.08); }
+    to { transform: rotate(360deg) scale(1.08, 1.08); }
   }
 
   @keyframes borderGlow {
@@ -508,11 +508,11 @@
     }
 
     .hero-logo-display {
-      width: min(320px, 78vw);
+      width: min(310px, 80vw);
     }
 
     .hero-logo-img {
-      width: 158%;
+      width: 152%;
     }
 
     .hero-stats {
@@ -532,11 +532,11 @@
     }
 
     .hero-logo-display {
-      width: min(290px, 82vw);
+      width: min(285px, 84vw);
     }
 
     .hero-logo-img {
-      width: 150%;
+      width: 145%;
     }
 
     .hero-stats {
@@ -572,11 +572,11 @@
 </nav>
 
 <section class="hero">
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:430px;height:520px;border-radius:50%;background:radial-gradient(ellipse,rgba(59,130,246,0.14) 0%,rgba(124,58,237,0.10) 48%,transparent 74%);pointer-events:none;z-index:0;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:460px;border-radius:50%;background:radial-gradient(ellipse,rgba(59,130,246,0.14) 0%,rgba(124,58,237,0.10) 48%,transparent 74%);pointer-events:none;z-index:0;"></div>
 
   <div class="hero-badge">
     <span class="hero-badge-dot"></span>
-    Now Available — Version 2.4.1
+    Kini Tersedia — Versi 2.4.1
   </div>
 
   <div class="hero-logo-display">
