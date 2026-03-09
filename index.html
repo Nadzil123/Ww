@@ -246,7 +246,6 @@
     margin-bottom: 30px;
     animation: fadeUp 0.8s 0.05s ease both;
     z-index: 2;
-    overflow: hidden;
   }
 
   .hero-hex-bg {
@@ -287,20 +286,16 @@
   }
 
   .hero-logo-img {
-    position: absolute;
-    left: 50%;
-    top: 38%;
-    transform: translate(-50%, -50%);
     max-width: none;
     max-height: none;
     width: 156%;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 -4px 10px rgba(96,165,250,0.28));
-    animation: float 4s ease-in-out infinite;
     user-select: none;
     pointer-events: none;
     flex-shrink: 0;
+    position: relative;
     z-index: 2;
   }
 
@@ -587,13 +582,11 @@
   </div>
 
   <div class="hero-logo-display">
-    <!-- Bayangan 1: blur besar -->
     <div class="hero-hex-bg"></div>
-    <!-- Bayangan 2: border glow + hex -->
     <div class="hero-hex-border"></div>
-    <div class="hero-hex-main"></div>
-    <!-- Logo terpisah -->
-    <img src="assets/Icon/Center.png" alt="Nolqu Main Logo" class="hero-logo-img">
+    <div class="hero-hex-main">
+      <img src="assets/Icon/Center.png" alt="Nolqu Main Logo" class="hero-logo-img">
+    </div>
   </div>
 
   <div class="hero-title">
