@@ -179,21 +179,36 @@
   .footer-logo { font-family:'Orbitron',monospace; font-weight:900; font-size:14px; letter-spacing:3px; background:linear-gradient(90deg,var(--blue-bright),var(--purple-bright)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .footer-copy { font-family:'Rajdhani',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; }
 
+  /* ── HAMBURGER ── */
+  .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:none; border:1px solid var(--border); border-radius:8px; cursor:pointer; flex-shrink:0; transition:border-color 0.2s; }
+  .nav-hamburger:hover { border-color:var(--blue-bright); }
+  .nav-hamburger span { display:block; width:18px; height:2px; background:var(--text); border-radius:2px; transition:transform 0.3s,opacity 0.3s,width 0.3s; }
+  .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity:0; width:0; }
+  .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+  .nav-drawer { display:none; position:fixed; top:68px; left:0; right:0; background:rgba(6,6,15,0.97); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); z-index:99; padding:14px 16px 18px; flex-direction:column; gap:3px; animation:drawerIn 0.22s ease both; }
+  .nav-drawer.open { display:flex; }
+  .nav-drawer button { background:none; border:none; color:var(--muted); font-family:'Rajdhani',sans-serif; font-weight:700; font-size:15px; letter-spacing:2px; text-transform:uppercase; padding:13px 16px; border-radius:10px; cursor:pointer; text-align:left; transition:color 0.2s,background 0.2s; width:100%; }
+  .nav-drawer button:hover, .nav-drawer button.active { color:var(--blue-bright); background:rgba(59,130,246,0.08); }
+  @keyframes drawerIn { from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);} }
+
   /* Responsive */
-  @media(max-width:860px){
+  @media(max-width:768px){
     body{cursor:auto;} .cursor,.cursor-ring{display:none;}
-    nav{padding:0 18px;} .nav-links button{font-size:11px;padding:6px 9px;letter-spacing:1px;}
+    nav{padding:0 18px;} .nav-links{display:none;} .nav-hamburger{display:flex;}
     .page-wrap{padding:36px 18px 56px;}
     .features-grid{grid-template-columns:repeat(2,1fr);}
     .showcase-grid{grid-template-columns:1fr;} .showcase-wide{aspect-ratio:16/9;}
-    .mc-versions-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+    .mc-versions-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}
     footer{flex-direction:column;text-align:center;padding:24px 18px;}
     .release-card{flex-direction:column;align-items:flex-start;}
-  }
-  @media(max-width:540px){
-    .features-grid{grid-template-columns:1fr;}
     .hero-stats{grid-template-columns:repeat(2,1fr);}
-    .nav-links button{font-size:10px;padding:5px 7px;letter-spacing:0.5px;}
+  }
+  @media(max-width:480px){
+    .features-grid{grid-template-columns:1fr;}
+    .mc-versions-grid{grid-template-columns:repeat(2,1fr);}
+    .hero-logo-display{width:min(260px,78vw);}
   }
 </style>
 </head>
@@ -219,7 +234,20 @@
     <li><button onclick="navigate('showcase')" data-page="showcase">Showcase</button></li>
     <li><button onclick="navigate('download')" data-page="download">Download</button></li>
   </ul>
+
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-drawer" id="nav-drawer">
+  <button onclick="navigate('home');closeDrawer()" data-drawer-page="home">🏠 Home</button>
+  <button onclick="navigate('features');closeDrawer()" data-drawer-page="features">⚡ Features</button>
+  <button onclick="navigate('modules');closeDrawer()" data-drawer-page="modules">🧩 Modules</button>
+  <button onclick="navigate('showcase');closeDrawer()" data-drawer-page="showcase">🎮 Showcase</button>
+  <button onclick="navigate('download');closeDrawer()" data-drawer-page="download">⬇ Download</button>
+</div>
 
 <div id="app">
 
@@ -435,6 +463,9 @@ function navigate(page, data) {
   document.querySelectorAll('.nav-links button').forEach(b => {
     b.classList.toggle('active', b.dataset.page === page || (page==='download-detail' && b.dataset.page==='download'));
   });
+  document.querySelectorAll('.nav-drawer button[data-drawer-page]').forEach(b => {
+    b.classList.toggle('active', b.dataset.drawerPage === page || (page==='download-detail' && b.dataset.drawerPage==='download'));
+  });
 
   let target;
   if (page === 'download-detail') {
@@ -571,6 +602,25 @@ function startCounters(){
     (function step(now){ const p=Math.min((now-start)/1800,1),e=1-Math.pow(1-p,3); el.textContent=Math.floor(e*target).toLocaleString(); if(p<1)requestAnimationFrame(step); else el.textContent=target.toLocaleString(); })(start);
   });
 }
+
+/* ── HAMBURGER ── */
+function toggleDrawer(){
+  const h = document.getElementById('hamburger');
+  const d = document.getElementById('nav-drawer');
+  h.classList.toggle('open');
+  d.classList.toggle('open');
+}
+function closeDrawer(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('nav-drawer').classList.remove('open');
+}
+
+// Close drawer on outside tap
+document.addEventListener('click', e => {
+  const h = document.getElementById('hamburger');
+  const d = document.getElementById('nav-drawer');
+  if (!h.contains(e.target) && !d.contains(e.target)) closeDrawer();
+});
 
 /* ── INIT ── */
 navigate('home');
