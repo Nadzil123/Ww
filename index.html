@@ -546,6 +546,505 @@
       grid-template-columns: 1fr;
     }
   }
+
+  /* ──────────────── SECTION BASE ──────────────── */
+  .section {
+    position: relative;
+    z-index: 2;
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    margin-bottom: 14px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, var(--text) 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .section-desc {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 56px;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+    margin: 0;
+  }
+
+  /* ──────────────── FEATURES ──────────────── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .feat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+
+  .feat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(124,58,237,0.04));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .feat-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(59,130,246,0.12);
+  }
+
+  .feat-card:hover::before { opacity: 1; }
+
+  .feat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(124,58,237,0.15));
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .feat-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .feat-desc {
+    font-size: 13.5px;
+    color: #64748b;
+    line-height: 1.75;
+  }
+
+  .feat-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    padding: 3px 10px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 100px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--blue-bright);
+    text-transform: uppercase;
+  }
+
+  /* ──────────────── MODULES ──────────────── */
+  #modules { background: rgba(11,11,26,0.7); }
+
+  .modules-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mod-category {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--card);
+  }
+
+  .mod-category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .mod-category-header:hover { background: rgba(59,130,246,0.05); }
+
+  .mod-cat-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .mod-cat-icon {
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(124,58,237,0.12));
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mod-cat-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .mod-cat-count {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .mod-cat-arrow {
+    color: var(--muted);
+    transition: transform 0.3s;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .mod-category.open .mod-cat-arrow { transform: rotate(180deg); }
+
+  .mod-list {
+    display: none;
+    padding: 0 24px 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mod-category.open .mod-list { display: flex; }
+
+  .mod-chip {
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #94a3b8;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .mod-chip:hover {
+    border-color: var(--blue-bright);
+    color: var(--blue-bright);
+  }
+
+  /* ──────────────── SHOWCASE ──────────────── */
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .showcase-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card);
+    position: relative;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .showcase-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 0 40px rgba(59,130,246,0.1);
+  }
+
+  .showcase-card-wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/6;
+  }
+
+  .showcase-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--muted);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .showcase-placeholder-icon {
+    font-size: 36px;
+    opacity: 0.4;
+  }
+
+  .showcase-label {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    padding: 5px 12px;
+    background: rgba(6,6,15,0.75);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+  }
+
+  .showcase-bg-1 {
+    background: linear-gradient(135deg, rgba(29,78,216,0.12) 0%, rgba(76,29,149,0.08) 100%);
+  }
+  .showcase-bg-2 {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(29,78,216,0.06) 100%);
+  }
+  .showcase-bg-3 {
+    background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(124,58,237,0.12) 100%);
+  }
+
+  /* ──────────────── DOWNLOAD ──────────────── */
+  #download-wrapper {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  #download-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, rgba(124,58,237,0.07) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .download-card {
+    position: relative;
+    z-index: 1;
+    border: 1px solid var(--border-strong);
+    border-radius: 24px;
+    padding: 64px 48px;
+    background: linear-gradient(135deg, rgba(29,78,216,0.07), rgba(76,29,149,0.07));
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .download-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--card);
+    z-index: -1;
+  }
+
+  .download-card-glow {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  .dl-version {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 100px;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--blue-bright);
+    margin-bottom: 28px;
+  }
+
+  .dl-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dl-desc {
+    font-size: 16px;
+    color: #64748b;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .dl-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+
+  .dl-specs {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .dl-spec {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .dl-spec-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--blue-bright);
+    box-shadow: 0 0 6px var(--blue-bright);
+  }
+
+  /* ──────────────── FOOTER ──────────────── */
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 40px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--blue-bright), var(--purple-bright));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .footer-copy {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--blue-bright); }
+
+  /* ──────────────── RESPONSIVE ──────────────── */
+  @media (max-width: 860px) {
+    .section { padding: 72px 24px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .showcase-grid { grid-template-columns: 1fr; }
+    .showcase-card-wide { aspect-ratio: 16/9; }
+    footer { flex-direction: column; text-align: center; }
+    .download-card { padding: 48px 24px; }
+  }
+
+  @media (max-width: 540px) {
+    .features-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────────── SCROLL REVEAL ──────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 </head>
 <body>
@@ -630,6 +1129,235 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<div class="section-divider"></div>
+<section id="features">
+  <div class="section">
+    <div class="section-tag">Core Features</div>
+    <h2 class="section-title reveal">Built to Dominate</h2>
+    <p class="section-desc reveal">Every module precision-tuned for maximum performance. Zero compromise on stability.</p>
+
+    <div class="features-grid">
+      <div class="feat-card reveal">
+        <span class="feat-badge">PvP</span>
+        <div class="feat-icon">⚔️</div>
+        <div class="feat-name">KillAura</div>
+        <div class="feat-desc">Multi-target combat engine dengan smoothing rotasi canggih. Bypass anti-cheat modern dengan reach & timing yang bisa dikonfigurasi.</div>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-badge">Visual</span>
+        <div class="feat-icon">👁️</div>
+        <div class="feat-name">ESP & Tracers</div>
+        <div class="feat-desc">Visualisasi entitas full-3D — player, mob, item, dan chest. Warna kustom, distance fade, dan health bar terintegrasi.</div>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-badge">Movement</span>
+        <div class="feat-icon">⚡</div>
+        <div class="feat-name">Speed & Flight</div>
+        <div class="feat-desc">Sistem gerak adaptif dengan mode BHop, Strafe, dan Glide. Dirancang agar lolos dari deteksi server-side velocity.</div>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-badge">World</span>
+        <div class="feat-icon">🔦</div>
+        <div class="feat-name">Fullbright & Xray</div>
+        <div class="feat-desc">Penerang dunia tanpa shader overhead. Xray dengan filter ore yang bisa dipilih per material dan kedalaman.</div>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-badge">HUD</span>
+        <div class="feat-icon">🖥️</div>
+        <div class="feat-name">Custom HUD</div>
+        <div class="feat-desc">Editor HUD drag-and-drop real-time. Tambah, resize, dan warnai setiap elemen — armor, ping, FPS, koordinat, dan lebih.</div>
+      </div>
+      <div class="feat-card reveal">
+        <span class="feat-badge">Util</span>
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-name">Anti-Cheat Bypass</div>
+        <div class="feat-desc">Engine bypass generasi berikutnya yang diuji terhadap NCP, AAC, Spartan, Grim, dan Vulcan. Pembaruan otomatis setiap patch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ MODULES ══════════════ -->
+<div class="section-divider"></div>
+<section id="modules" style="background: rgba(11,11,26,0.7); padding: 1px 0;">
+  <div class="section">
+    <div class="section-tag">Module List</div>
+    <h2 class="section-title reveal">120+ Modul Siap Pakai</h2>
+    <p class="section-desc reveal">Dikategorikan rapi. Aktifkan hanya yang kamu butuhkan.</p>
+
+    <div class="modules-wrap">
+
+      <div class="mod-category open reveal">
+        <div class="mod-category-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="mod-cat-left">
+            <div class="mod-cat-icon">⚔️</div>
+            <div>
+              <div class="mod-cat-name">Combat</div>
+              <div class="mod-cat-count">22 Modules</div>
+            </div>
+          </div>
+          <span class="mod-cat-arrow">▾</span>
+        </div>
+        <div class="mod-list">
+          <span class="mod-chip">KillAura</span><span class="mod-chip">Criticals</span><span class="mod-chip">AutoArmor</span><span class="mod-chip">Velocity</span><span class="mod-chip">AimAssist</span><span class="mod-chip">BowAimbot</span><span class="mod-chip">AntiKnockback</span><span class="mod-chip">TriggerBot</span><span class="mod-chip">AutoPotion</span><span class="mod-chip">AutoTotem</span><span class="mod-chip">MultiAura</span><span class="mod-chip">Reach</span><span class="mod-chip">AttackSpeed</span><span class="mod-chip">Backtrack</span><span class="mod-chip">HitSelect</span>
+        </div>
+      </div>
+
+      <div class="mod-category reveal">
+        <div class="mod-category-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="mod-cat-left">
+            <div class="mod-cat-icon">🏃</div>
+            <div>
+              <div class="mod-cat-name">Movement</div>
+              <div class="mod-cat-count">18 Modules</div>
+            </div>
+          </div>
+          <span class="mod-cat-arrow">▾</span>
+        </div>
+        <div class="mod-list">
+          <span class="mod-chip">Speed</span><span class="mod-chip">Flight</span><span class="mod-chip">BHop</span><span class="mod-chip">Sprint</span><span class="mod-chip">NoFall</span><span class="mod-chip">Step</span><span class="mod-chip">Glide</span><span class="mod-chip">LongJump</span><span class="mod-chip">FastLadder</span><span class="mod-chip">NoSlowdown</span><span class="mod-chip">Strafe</span><span class="mod-chip">HighJump</span>
+        </div>
+      </div>
+
+      <div class="mod-category reveal">
+        <div class="mod-category-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="mod-cat-left">
+            <div class="mod-cat-icon">👁️</div>
+            <div>
+              <div class="mod-cat-name">Visual</div>
+              <div class="mod-cat-count">26 Modules</div>
+            </div>
+          </div>
+          <span class="mod-cat-arrow">▾</span>
+        </div>
+        <div class="mod-list">
+          <span class="mod-chip">ESP</span><span class="mod-chip">Tracers</span><span class="mod-chip">Fullbright</span><span class="mod-chip">Xray</span><span class="mod-chip">Chams</span><span class="mod-chip">NameTags</span><span class="mod-chip">ItemESP</span><span class="mod-chip">StorageESP</span><span class="mod-chip">Waypoints</span><span class="mod-chip">HoleESP</span><span class="mod-chip">BreakESP</span><span class="mod-chip">Shulker Peek</span><span class="mod-chip">NoHurtcam</span><span class="mod-chip">CaveESP</span>
+        </div>
+      </div>
+
+      <div class="mod-category reveal">
+        <div class="mod-category-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="mod-cat-left">
+            <div class="mod-cat-icon">🌍</div>
+            <div>
+              <div class="mod-cat-name">World</div>
+              <div class="mod-cat-count">20 Modules</div>
+            </div>
+          </div>
+          <span class="mod-cat-arrow">▾</span>
+        </div>
+        <div class="mod-list">
+          <span class="mod-chip">Scaffold</span><span class="mod-chip">FastPlace</span><span class="mod-chip">AutoMine</span><span class="mod-chip">Nuker</span><span class="mod-chip">AutoFarm</span><span class="mod-chip">TimerHack</span><span class="mod-chip">AntiAFK</span><span class="mod-chip">ChestStealer</span><span class="mod-chip">InventoryManager</span><span class="mod-chip">AutoFish</span><span class="mod-chip">Freecam</span>
+        </div>
+      </div>
+
+      <div class="mod-category reveal">
+        <div class="mod-category-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="mod-cat-left">
+            <div class="mod-cat-icon">⚙️</div>
+            <div>
+              <div class="mod-cat-name">Misc & Utility</div>
+              <div class="mod-cat-count">34 Modules</div>
+            </div>
+          </div>
+          <span class="mod-cat-arrow">▾</span>
+        </div>
+        <div class="mod-list">
+          <span class="mod-chip">CustomHUD</span><span class="mod-chip">ClickGUI</span><span class="mod-chip">IRC Chat</span><span class="mod-chip">AutoRespawn</span><span class="mod-chip">FastChat</span><span class="mod-chip">Spammer</span><span class="mod-chip">Namespoof</span><span class="mod-chip">Disabler</span><span class="mod-chip">PacketFly</span><span class="mod-chip">AntiBot</span><span class="mod-chip">Derp</span><span class="mod-chip">MiddleClick</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SHOWCASE ══════════════ -->
+<div class="section-divider"></div>
+<section id="showcase">
+  <div class="section">
+    <div class="section-tag">Showcase</div>
+    <h2 class="section-title reveal">Lihat Aksinya</h2>
+    <p class="section-desc reveal">Tampilan UI bersih, performa mulus. Nolqu terlihat setajam performanya.</p>
+
+    <div class="showcase-grid">
+      <div class="showcase-card showcase-card-wide showcase-bg-1 reveal">
+        <div class="showcase-placeholder">
+          <div class="showcase-placeholder-icon">🎮</div>
+          <div>Gameplay Demo — Tambahkan screenshot utama kamu di sini</div>
+        </div>
+        <span class="showcase-label">In-Game HUD</span>
+      </div>
+      <div class="showcase-card showcase-bg-2 reveal">
+        <div class="showcase-placeholder">
+          <div class="showcase-placeholder-icon">⚙️</div>
+          <div>ClickGUI Preview</div>
+        </div>
+        <span class="showcase-label">Module GUI</span>
+      </div>
+      <div class="showcase-card showcase-bg-3 reveal">
+        <div class="showcase-placeholder">
+          <div class="showcase-placeholder-icon">👁️</div>
+          <div>ESP & Tracers Demo</div>
+        </div>
+        <span class="showcase-label">Visual Modules</span>
+      </div>
+    </div>
+
+    <p style="text-align:center; font-family:'Rajdhani',sans-serif; font-size:12px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-top:8px;">
+      Ganti placeholder dengan <code style="color:var(--blue-bright);">&lt;img&gt;</code> atau <code style="color:var(--blue-bright);">&lt;video&gt;</code> sesuai aset kamu
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════ DOWNLOAD ══════════════ -->
+<div class="section-divider"></div>
+<div id="download-wrapper">
+  <div class="section">
+    <div id="download" class="download-card reveal">
+      <div class="download-card-glow"></div>
+
+      <div class="dl-version">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--blue-bright);box-shadow:0 0 8px var(--blue-bright);display:inline-block;"></span>
+        v2.4.1 — Stable Release
+      </div>
+
+      <div class="dl-title">Download Nolqu</div>
+      <p class="dl-desc">Gratis selamanya. Tidak perlu akun. Langsung install dan mainkan. Support Minecraft 1.8 hingga 1.20.4.</p>
+
+      <div class="dl-buttons">
+        <button class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16L6 10h4V4h4v6h4l-6 6zm-6 2h12v2H6v-2z"/></svg>
+          Download Gratis
+        </button>
+        <button class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub Source
+        </button>
+      </div>
+
+      <div class="dl-specs">
+        <div class="dl-spec"><span class="dl-spec-dot"></span>Minecraft 1.8 – 1.20.4</div>
+        <div class="dl-spec"><span class="dl-spec-dot"></span>Windows · macOS · Linux</div>
+        <div class="dl-spec"><span class="dl-spec-dot"></span>Fabric / Forge</div>
+        <div class="dl-spec"><span class="dl-spec-dot"></span>Auto-Updater</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-logo">NOLQU</div>
+  <ul class="footer-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#showcase">Showcase</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <div class="footer-copy">© 2024 Nolqu Client. All rights reserved.</div>
+</footer>
 
 <script>
   const cursor = document.getElementById('cursor');
@@ -738,6 +1466,42 @@
     requestAnimationFrame(drawBg);
   }
   drawBg();
+
+  // ── Stat Counter ──
+  const statEls = document.querySelectorAll('.stat-num[data-target]');
+  const countUp = (el) => {
+    const target = +el.dataset.target;
+    const duration = 1800;
+    const start = performance.now();
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.floor(ease * target).toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString();
+    };
+    requestAnimationFrame(step);
+  };
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { countUp(e.target); statObserver.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+
+  statEls.forEach(el => statObserver.observe(el));
+
+  // ── Scroll Reveal ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
