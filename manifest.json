@@ -1,0 +1,23 @@
+{
+  "name": "Nolqu Client",
+  "short_name": "Nolqu",
+  "description": "Next Generation Minecraft Client",
+  "start_url": "/Ww/",
+  "display": "standalone",
+  "background_color": "#06060F",
+  "theme_color": "#06060F",
+  "icons": [
+    {
+      "src": "https://nadzil123.github.io/Ww/assets/Icon/Icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://nadzil123.github.io/Ww/assets/Icon/Icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
